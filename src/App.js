@@ -84,7 +84,13 @@ export default class App extends Component {
     return (
       <div>
         <h1> Questions about Game of Thrones</h1>
-        
+        <ul>
+          {this.state.questions.map((question, id) => <li  key={id}> {question} </li>)}
+        </ul>
+        <h1> Answers</h1>
+        <ul>
+          {this.state.answers.map((answer, id) => <li key={id}> {answer} </li>)}
+        </ul>
       </div>
     )
   }
