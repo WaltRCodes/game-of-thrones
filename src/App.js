@@ -8,7 +8,6 @@ export default class App extends Component {
 
     this.state = {
       isLoaded: false,
-      data: [],
       questions: ["Where was Margaery Tyrell born?",
       "What region is House Targaryen in?",
       "What's the coat of arms of House Lannister?",
@@ -58,7 +57,14 @@ export default class App extends Component {
       })
       const seventhResponse = responses[6];
       //console.log(seventhResponse.data);
-      
+      let bookcalls = seventhResponse.data.povBooks.map(link => axios.get(link));
+      axios.all(bookcalls).then(axios.spread((...books) => {
+        let stringBooks = [books[0].data.name, books[1].data.name, books[2].data.name];
+        console.log(stringBooks.join(' '));
+        
+      })).catch(errors => {
+        console.log(errors);
+      })
     })).catch(errors => {
       console.log(errors);
     })
