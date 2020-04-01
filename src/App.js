@@ -40,18 +40,23 @@ export default class App extends Component {
       console.log(firstResponse.data.born);
       const answerOne = firstResponse.data.born;
       newAnswers.push(answerOne);
+      console.log(newAnswers.join(" "));
       const secondResponse = responses[1];
       console.log(secondResponse.data.region);
       newAnswers.push(secondResponse.data.region);
+      console.log(newAnswers.join(" "));
       const thirdResponse = responses[2];
       console.log(thirdResponse.data.coatOfArms);
       newAnswers.push(thirdResponse.data.coatOfArms);
+      console.log(newAnswers.join(" "));
       const forthResponse = responses[3];
       console.log(forthResponse.data.seats[1]);
       newAnswers.push(forthResponse.data.seats[1]);
+      console.log(newAnswers.join(" "));
       const fifthResponse = responses[4];
       console.log(fifthResponse.data.aliases[1]);
       newAnswers.push(fifthResponse.data.aliases[1]);
+      console.log(newAnswers.join(" "));
       const sixResponse = responses[5];
       //console.log(sixResponse.data);
       axios.get(sixResponse.data.founder)
@@ -59,6 +64,7 @@ export default class App extends Component {
         const name = res.data.name;
         console.log("founder",name)
         newAnswers.push(name);
+        console.log(newAnswers.join(" "));
       })
       .catch(error => {
         console.log('there is an eror', error)
@@ -70,13 +76,15 @@ export default class App extends Component {
         let stringBooks = [books[0].data.name, books[1].data.name, books[2].data.name];
         console.log(stringBooks.join(' '));
         newAnswers.push(stringBooks.join(' '));
+        this.setState({answers: newAnswers.map(answer => answer)})
       })).catch(errors => {
         console.log(errors);
       })
     })).catch(errors => {
       console.log(errors);
     })
-    this.setState({answers: newAnswers})
+    console.log(newAnswers.join(" "));
+    
   }
 
 
