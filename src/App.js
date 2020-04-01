@@ -32,25 +32,33 @@ export default class App extends Component {
 
     const calls = [axios.get(MargaeryTyrell),axios.get(HouseTargaryen),axios.get(HouseLannister),axios.get(HouseBaratheon),axios.get(RobertBaratheon),axios.get(HouseStark),axios.get(CatelynStark)];
 
+    let newAnswers= [];
+
     axios.all(calls).then(axios.spread((...responses) => {
       const firstResponse = responses[0];
       console.log(firstResponse);
       console.log(firstResponse.data.born);
       const answerOne = firstResponse.data.born;
+      newAnswers.push(answerOne);
       const secondResponse = responses[1];
       console.log(secondResponse.data.region);
+      newAnswers.push(secondResponse.data.region);
       const thirdResponse = responses[2];
       console.log(thirdResponse.data.coatOfArms);
+      newAnswers.push(thirdResponse.data.coatOfArms);
       const forthResponse = responses[3];
       console.log(forthResponse.data.seats[1]);
+      newAnswers.push(forthResponse.data.seats[1]);
       const fifthResponse = responses[4];
       console.log(fifthResponse.data.aliases[1]);
+      newAnswers.push(fifthResponse.data.aliases[1]);
       const sixResponse = responses[5];
       //console.log(sixResponse.data);
       axios.get(sixResponse.data.founder)
       .then(res => {
         const name = res.data.name;
         console.log("founder",name)
+        newAnswers.push(name);
       })
       .catch(error => {
         console.log('there is an eror', error)
@@ -61,13 +69,14 @@ export default class App extends Component {
       axios.all(bookcalls).then(axios.spread((...books) => {
         let stringBooks = [books[0].data.name, books[1].data.name, books[2].data.name];
         console.log(stringBooks.join(' '));
-        
+        newAnswers.push(stringBooks.join(' '));
       })).catch(errors => {
         console.log(errors);
       })
     })).catch(errors => {
       console.log(errors);
     })
+    this.setState({answers: newAnswers})
   }
 
 
