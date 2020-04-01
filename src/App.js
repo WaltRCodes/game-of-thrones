@@ -20,17 +20,20 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    let MargaeryTyrell = "http://anapioficeandfire.com/api/characters/16";
-    let HouseTargaryen = "http://www.anapioficeandfire.com/api/houses/378";
-    let HouseLannister = "http://www.anapioficeandfire.com/api/houses/229";
-    let HouseBaratheon ="http://www.anapioficeandfire.com/api/houses/17";
-    let RobertBaratheon = "http://www.anapioficeandfire.com/api/characters/901";
-    let HouseStark = "http://www.anapioficeandfire.com/api/houses/362";
-    let CatelynStark = "http://www.anapioficeandfire.com/api/characters/232";
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    let MargaeryTyrell = proxyurl+ "https://anapioficeandfire.com/api/characters/16";
+    let HouseTargaryen = "https://www.anapioficeandfire.com/api/houses/378";
+    let HouseLannister = "https://www.anapioficeandfire.com/api/houses/229";
+    let HouseBaratheon ="https://www.anapioficeandfire.com/api/houses/17";
+    let RobertBaratheon = "https://www.anapioficeandfire.com/api/characters/901";
+    let HouseStark = "https://www.anapioficeandfire.com/api/houses/362";
+    let CatelynStark = "https://www.anapioficeandfire.com/api/characters/232";
 
     const calls = [axios.get(MargaeryTyrell),axios.get(HouseTargaryen),axios.get(HouseLannister),axios.get(HouseBaratheon),axios.get(RobertBaratheon),axios.get(HouseStark),axios.get(CatelynStark)];
 
     axios.all(calls).then(axios.spread((...responses) => {
+      const firstResponse = responses[0];
+      console.log(firstResponse);
       
     })).catch(errors => {
       console.log(errors);
