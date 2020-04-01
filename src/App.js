@@ -28,13 +28,13 @@ export default class App extends Component {
     let HouseStark = "http://www.anapioficeandfire.com/api/houses/362";
     let CatelynStark = "http://www.anapioficeandfire.com/api/characters/232";
 
-    const questionOne = axios.get(MargaeryTyrell);
-    const questionTwo = axios.get(HouseTargaryen);
-    const questionThree = axios.get(HouseLannister);
-    const questionFour = axios.get(HouseBaratheon);
-    const questionFive = axios.get(RobertBaratheon);
-    const questionSix = axios.get(HouseStark);
-    const questionSeven = axios.get(CatelynStark);
+    const calls = [axios.get(MargaeryTyrell),axios.get(HouseTargaryen),axios.get(HouseLannister),axios.get(HouseBaratheon),axios.get(RobertBaratheon),axios.get(HouseStark),axios.get(CatelynStark)];
+
+    axios.all(calls).then(axios.spread((...responses) => {
+      
+    })).catch(errors => {
+      console.log(errors);
+    })
   }
 
 
