@@ -1,0 +1,4 @@
+//start page history
+//capture starting variables like location url, path, and state
+//listen for any changes
+//close the object when done
