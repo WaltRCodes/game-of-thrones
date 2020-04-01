@@ -9,14 +9,13 @@ export default class App extends Component {
     this.state = {
       isLoaded: false,
       data: [],
-      questions: ["",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""]
+      questions: ["Where was Margaery Tyrell born?",
+      "What region is House Targaryen in?",
+      "What's the coat of arms of House Lannister?",
+      "What is the second seat of House Baratheon?",
+      "What is Robert Baratheon's second alias?",
+      "What's the name of the founder of House Stark?",
+      "What are the titles of Catelyn Stark's three POV books? "]
     }
   }
 
